@@ -1,22 +1,21 @@
-import List from './pages/List.js';
-import Leaderboard from './pages/Leaderboard.js';
-import Roulette from './pages/Roulette.js';
-import Packs from './pages/packs.js';
+import routes from './routes.js';
 
-const routes = [
-  { path: '/', component: List },
-  { path: '/leaderboard', component: Leaderboard },
-  { path: '/roulette', component: Roulette },
-  { path: '/packs', component: Packs },
-];
-
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
-  routes,
+export const store = Vue.reactive({
+    dark: JSON.parse(localStorage.getItem('dark')) || false,
+    toggleDark() {
+        this.dark = !this.dark;
+        localStorage.setItem('dark', JSON.stringify(this.dark));
+    },
 });
 
-const app = Vue.createApp({});
-app.use(router);
-app.mount('#app');
+const app = Vue.createApp({
+    data: () => ({ store }),
+});
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes,
+});
 
-console.log('✅ Router uruchomiony:', router.getRoutes());
+app.use(router);
+
+app.mount('#app');
