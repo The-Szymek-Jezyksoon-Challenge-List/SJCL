@@ -17,5 +17,5 @@ const router = VueRouter.createRouter({
 });
 
 app.use(router);
-
+console.log('Router załadowany ✅', router.getRoutes());
 app.mount('#app');
