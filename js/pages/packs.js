@@ -27,7 +27,7 @@ export default {
     },
   },
   template: `
-    <section class="packs" style="color:white; text-align:center; padding:20px;">
+    <section class="packs" style="color:blue; text-align:center; padding:20px;">
       <h1 style="margin-bottom:20px;">🎮 Packs</h1>
 
       <div v-if="!selectedPack">
