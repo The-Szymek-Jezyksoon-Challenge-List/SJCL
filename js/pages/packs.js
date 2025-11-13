@@ -3,18 +3,9 @@ export default {
     return {
       packs: [
         {
-          name: 'Starter Pack',
-          levels: ['Level 1', 'Level 2', 'Level 3'],
-        },
-        {
-          name: 'Advanced Pack',
-          levels: ['Level 4', 'Level 5', 'Level 6'],
-        },
-        {
-          name: 'Challenge Pack',
-          levels: ['Level 7', 'Level 8'],
-        },
-      ],
+          name: 'Starter',
+          levels: ['18stka'],
+
       selectedPack: null,
     };
   },
