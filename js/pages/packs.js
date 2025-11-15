@@ -4,16 +4,27 @@ export default {
       packs: [
         {
           name: 'Starter Pack',
-          levels: ['18STKA KACPERKA'],
+          levels: [
+            { id: 'level1', name: 'Level 1' },
+            { id: 'level2', name: 'Level 2' },
+            { id: 'level3', name: 'Level 3' },
+          ],
         },
         {
           name: 'Advanced Pack',
-          levels: ['AOD Challenge', 'the bill'],
+          levels: [
+            { id: 'level4', name: 'Level 4' },
+            { id: 'level5', name: 'Level 5' },
+            { id: 'level6', name: 'Level 6' },
+          ],
         },
         {
           name: 'Challenge Pack',
-          levels: ['Egzamin Osmoklasisty', 'strzaleczka'],
-        },
+          levels: [
+            { id: 'level7', name: 'Level 7' },
+            { id: 'level8', name: 'Level 8' },
+          ]
+        }
       ],
       selectedPack: null,
     };
@@ -27,14 +38,14 @@ export default {
     },
   },
   template: `
-    <section class="packs" style="color:blue; text-align:center; padding:20px;">
+    <section style="color:white; text-align:center; padding:20px;">
       <h1 style="margin-bottom:20px;">🎮 Packs</h1>
 
       <div v-if="!selectedPack">
         <div v-for="pack in packs"
              :key="pack.name"
              @click="openPack(pack)"
-             style="cursor:pointer; border:1px solid red; border-radius:12px; margin:10px auto; padding:15px; width:250px;">
+             style="cursor:pointer; border:1px solid white; border-radius:12px; margin:10px auto; padding:15px; width:250px;">
           <h2>{{ pack.name }}</h2>
         </div>
       </div>
@@ -42,16 +53,22 @@ export default {
       <div v-else>
         <button @click="backToPacks"
                 style="margin-bottom:15px; padding:5px 10px;">⬅ Wróć</button>
+
         <h2>{{ selectedPack.name }}</h2>
+
         <ul style="list-style:none; padding:0;">
           <li v-for="level in selectedPack.levels"
-              :key="level"
+              :key="level.id"
               style="margin:6px 0;">
-            {{ level }}
+            <router-link
+              :to="'/level/' + level.id"
+              style="color:cyan;"
+            >
+              {{ level.name }}
+            </router-link>
           </li>
         </ul>
       </div>
     </section>
   `
 };
-
